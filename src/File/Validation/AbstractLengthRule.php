@@ -48,6 +48,9 @@ abstract class AbstractLengthRule extends AbstractMinMaxRule
         ], AbstractModelFile::TYPE_STRING, PhpMethod::ACCESS_PUBLIC, false, true);
         $itemName = sprintf('%s%sItem', lcfirst($this->getFile()->getModel()->getCleanName(false)), ucfirst($this->getAttribute()->getCleanName()));
 
+        if (is_array($value))
+            $value = $value[0];
+
         $method
             ->addChild('$message = \'\';')
             ->addChild('$invalidValues = [];')
